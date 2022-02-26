@@ -5,7 +5,6 @@ require('dotenv').config();
 const dhlTrackingEndpoint = "https://api-eu.dhl.com/track/shipments";
 
 const getDHLShipmentInfoFromTrackingNum = async (trackingNumbers) => {
-    console.log(trackingNumbers);
     const trackingNumbersArr = trackingNumbers.split(",");
     const url = `${dhlTrackingEndpoint}?trackingNumber=${trackingNumbers}&limit=100`
     const res = await fetch(url, {
@@ -37,7 +36,6 @@ const getDHLShipmentInfoFromTrackingNum = async (trackingNumbers) => {
             deliveryDate
         };
     });
-    console.log(JSON.stringify(result));
     return result;
 };
 

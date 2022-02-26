@@ -15,7 +15,6 @@ const Index = () => {
             body: JSON.stringify({ trackingNumString: reqBody }),
             headers: { 'Content-Type': 'application/json', 'Accept': '*/*' }
         });
-        console.log(apiCall, reqBody);
         let resJson = await res.json();
         let downloadData = "";
         if (resJson.success) {
@@ -85,7 +84,7 @@ const Index = () => {
     return (
         <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit}>
             <label>Enter the tracking numbers separated by commas:</label>
-            <textarea name="trackingNums" value={inputs.trackingNums || ""} onChange={handleChange} style={{ width: '25%' }} />
+            <textarea name="trackingNums" value={inputs.trackingNums || ""} onChange={handleChange} style={{ width: '40%', height: '200px' }} />
             <select name="apiType" value={inputs.apiType} onChange={handleChange} style={{ marginRight: 'auto', marginTop: '10px' }}>
                 <option value="fedex">Fedex</option>
                 <option value="DHL">DHL</option>

@@ -19,7 +19,6 @@ app.post('/fedex', async (req, res) => {
     try {
         const trackingNumString = req.body.trackingNumString.replaceAll(/\s/g, '');
         const trackingNumArr = trackingNumString.split(',');
-        console.log(trackingNumArr);
         const result = await fedex.getFedexShipmentInfoFromTrackingNum(trackingNumArr);
         res.send({ success: !!result?.length, result });
     } catch (e) {
@@ -29,10 +28,8 @@ app.post('/fedex', async (req, res) => {
 
 app.post('/dhl', async (req, res) => {
     try {
-        console.log("Test", req.body);
         const trackingNumString = req.body.trackingNumString.replaceAll(/\s/g, '');
         const result = await dhl.getDHLShipmentInfoFromTrackingNum(trackingNumString);
-        console.log(result);
         res.send({ success: !!result?.length, result });
     } catch (e) {
         res.send(e);
